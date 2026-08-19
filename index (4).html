@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vewunn — Productos de origen</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bark:    '#2B2723',
+          clay:    '#A9633D',
+          sand:    '#E9E0D0',
+          cream:   '#FBF7EF',
+          moss:    '#6E7355',
+          stone:   '#8C8477'
+        },
+        fontFamily: {
+          display: ['Fraunces', 'serif'],
+          body: ['Work Sans', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  body { font-family: 'Work Sans', sans-serif; background-color: #FBF7EF; color: #2B2723; }
+  .font-display { font-family: 'Fraunces', serif; }
+
+  /* Sello / stamp signature element */
+  .sello {
+    position: relative;
+  }
+  .sello::after {
+    content: attr(data-num);
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 44px;
+    height: 44px;
+    border-radius: 9999px;
+    border: 1px solid rgba(251,247,239,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    color: #FBF7EF;
+    background: rgba(43,39,35,0.35);
+    backdrop-filter: blur(2px);
+  }
+
+  .divider-line {
+    background-image: repeating-linear-gradient(90deg, #8C8477 0, #8C8477 6px, transparent 6px, transparent 14px);
+    height: 1px;
+  }
+
+  .carousel-slide { transition: opacity 0.7s ease-in-out; }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-thumb { background: #C9BBA1; border-radius: 4px; }
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- ============ TOP BAR ============ -->
+<div class="bg-bark text-cream/80 text-[11px] md:text-xs">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 py-2 flex items-center justify-between">
+    <span class="tracking-wide uppercase font-medium text-cream/90">Productos de origen</span>
+    <div class="hidden sm:flex items-center gap-5 tracking-wide">
+      <span class="flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5 text-clay" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+        </svg>
+        bazardecampov@gmail.com
+      </span>
+      <span class="flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5 text-clay" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2m6-2a10 10 0 11-20 0 10 10 0 0120 0z" />
+        </svg>
+        Lun–Sáb · 10:00–19:00
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="bg-cream border-b border-stone/20">
+  <div class="max-w-7xl mx-auto px-4 md:px-8">
+    <div class="flex items-center justify-between py-6 md:py-8 relative">
+
+      <!-- Mobile hamburger -->
+      <button id="menuBtn" class="md:hidden text-bark" aria-label="Abrir menú">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
+        </svg>
+      </button>
+
+      <div class="hidden md:block w-28"></div>
+
+      <!-- Logo -->
+      <a href="#" class="mx-auto md:mx-0 md:absolute md:left-1/2 md:-translate-x-1/2 text-center">
+        <span class="font-display italic font-semibold text-5xl sm:text-6xl md:text-7xl tracking-wide text-bark drop-shadow-sm">Vewunn</span>
+        <span class="block text-[11px] md:text-sm tracking-[0.4em] uppercase text-clay mt-1">Bazar de campo</span>
+      </a>
+
+      <!-- Icons -->
+      <div class="flex items-center gap-4 md:gap-5 text-bark">
+        <button aria-label="Buscar" class="hover:text-clay transition-colors">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m1.35-5.4a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
+        <button aria-label="Acceder" class="hidden sm:inline-flex hover:text-clay transition-colors">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+          </svg>
+        </button>
+        <button aria-label="Carrito" class="relative hover:text-clay transition-colors">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.994-4.694 2.591-7.171.055-.228-.1-.454-.334-.454H5.106M7.5 14.25L5.106 5.25M7.5 14.25L5.25 4.5m2.25 9.75L4.5 3H2.25" />
+          </svg>
+          <span class="absolute -top-1.5 -right-2 bg-clay text-cream text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ============ NAV MENU (desktop) ============ -->
+    <nav class="hidden md:flex justify-center gap-10 pb-4 text-[13px] tracking-[0.15em] uppercase text-bark/80">
+      <a href="#accesorios" class="hover:text-clay transition-colors">Accesorios</a>
+      <a href="#vestuarios" class="hover:text-clay transition-colors">Vestuarios</a>
+      <a href="#decoracion" class="hover:text-clay transition-colors">Decoración</a>
+      <a href="#souvenir" class="hover:text-clay transition-colors">Souvenir</a>
+      <a href="#artesania" class="hover:text-clay transition-colors">Artesanía</a>
+    </nav>
+  </div>
+
+  <!-- ============ NAV MENU (mobile) ============ -->
+  <nav id="mobileMenu" class="md:hidden hidden flex-col border-t border-stone/20 bg-cream text-[13px] tracking-[0.1em] uppercase text-bark/80">
+    <a href="#accesorios" class="px-6 py-3 border-b border-stone/10">Accesorios</a>
+    <a href="#vestuarios" class="px-6 py-3 border-b border-stone/10">Vestuarios</a>
+    <a href="#decoracion" class="px-6 py-3 border-b border-stone/10">Decoración</a>
+    <a href="#souvenir" class="px-6 py-3 border-b border-stone/10">Souvenir</a>
+    <a href="#artesania" class="px-6 py-3">Artesanía</a>
+  </nav>
+</header>
+
+<!-- ============ CATEGORÍAS (solo nombre + icono) ============ -->
+<section id="colecciones" class="max-w-7xl mx-auto px-4 md:px-8 pt-12 pb-8 md:pt-16 md:pb-10">
+  <div class="grid grid-cols-3 sm:grid-cols-5 gap-6 md:gap-8">
+
+    <a id="accesorios" href="#productos" class="group flex flex-col items-center gap-2.5 text-center">
+      <span class="w-14 h-14 md:w-16 md:h-16 rounded-full border border-stone/40 flex items-center justify-center text-bark group-hover:border-clay group-hover:text-clay transition-colors">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H4.5a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1014.625 7.5H12V4.875zM12 4.875A2.625 2.625 0 109.375 7.5H12V4.875zM3.375 7.5h17.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125H3.375A1.125 1.125 0 012.25 10.875v-2.25C2.25 8.004 2.754 7.5 3.375 7.5z" />
+        </svg>
+      </span>
+      <span class="text-[12px] md:text-[13px] tracking-[0.1em] uppercase text-bark/80 group-hover:text-clay transition-colors">Accesorios</span>
+    </a>
+
+    <a id="vestuarios" href="#productos" class="group flex flex-col items-center gap-2.5 text-center">
+      <span class="w-14 h-14 md:w-16 md:h-16 rounded-full border border-stone/40 flex items-center justify-center text-bark group-hover:border-clay group-hover:text-clay transition-colors">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3l-4.5 3 2.25 3.75L7.5 9v11.25a.75.75 0 00.75.75h7.5a.75.75 0 00.75-.75V9l1.5.75 2.25-3.75-4.5-3-1.5 1.5a2.25 2.25 0 01-3 0L8.25 3z" />
+        </svg>
+      </span>
+      <span class="text-[12px] md:text-[13px] tracking-[0.1em] uppercase text-bark/80 group-hover:text-clay transition-colors">Vestuarios</span>
+    </a>
+
+    <a id="decoracion" href="#productos" class="group flex flex-col items-center gap-2.5 text-center">
+      <span class="w-14 h-14 md:w-16 md:h-16 rounded-full border border-stone/40 flex items-center justify-center text-bark group-hover:border-clay group-hover:text-clay transition-colors">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955a1.125 1.125 0 011.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75" />
+        </svg>
+      </span>
+      <span class="text-[12px] md:text-[13px] tracking-[0.1em] uppercase text-bark/80 group-hover:text-clay transition-colors">Decoración</span>
+    </a>
+
+    <a id="souvenir" href="#productos" class="group flex flex-col items-center gap-2.5 text-center">
+      <span class="w-14 h-14 md:w-16 md:h-16 rounded-full border border-stone/40 flex items-center justify-center text-bark group-hover:border-clay group-hover:text-clay transition-colors">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 8.25v13.5m0-13.5c-1.5-3-3.75-3.75-5.25-3-1.5.75-1.5 3 0 3.75S12 8.25 12 8.25zm0 0c1.5-3 3.75-3.75 5.25-3 1.5.75 1.5 3 0 3.75S12 8.25 12 8.25zM4.5 8.25h15v3.75h-15V8.25zM5.25 12h13.5v7.5a1.5 1.5 0 01-1.5 1.5h-10.5a1.5 1.5 0 01-1.5-1.5V12z" />
+        </svg>
+      </span>
+      <span class="text-[12px] md:text-[13px] tracking-[0.1em] uppercase text-bark/80 group-hover:text-clay transition-colors">Souvenir</span>
+    </a>
+
+    <a id="artesania" href="#productos" class="group flex flex-col items-center gap-2.5 text-center col-span-3 sm:col-span-1 justify-self-center">
+      <span class="w-14 h-14 md:w-16 md:h-16 rounded-full border border-stone/40 flex items-center justify-center text-bark group-hover:border-clay group-hover:text-clay transition-colors">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z" />
+        </svg>
+      </span>
+      <span class="text-[12px] md:text-[13px] tracking-[0.1em] uppercase text-bark/80 group-hover:text-clay transition-colors">Artesanía</span>
+    </a>
+
+  </div>
+  <div class="divider-line w-full mt-10 md:mt-12"></div>
+</section>
+
+<!-- ============ PRODUCTOS DESTACADOS ============ -->
+<section id="productos" class="bg-sand/40">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 py-10 md:py-16">
+
+    <div class="text-center mb-10 md:mb-14">
+      <p class="text-clay tracking-[0.35em] uppercase text-[11px] mb-3">Piezas seleccionadas</p>
+      <h2 class="font-display italic text-3xl md:text-4xl text-bark">Nuestros productos</h2>
+      <div class="divider-line w-24 mx-auto mt-5"></div>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+
+      <!-- Producto 1 -->
+      <div class="group">
+        <div class="overflow-hidden aspect-[4/5] bg-stone/10">
+          <img src="https://res.cloudinary.com/dy1ibwcdn/image/upload/v1784586926/WhatsApp_Image_2026-07-15_at_18.18.26_gqa3bn.jpg" alt="Bolsa Souvenir" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="mt-3 text-center">
+          <p class="font-display italic text-base md:text-lg text-bark">Bolsa Souvenir</p>
+          <p class="text-clay text-sm mt-1 tracking-wide">$6.500</p>
+        </div>
+      </div>
+
+      <!-- Producto 2 -->
+      <div class="group">
+        <div class="overflow-hidden aspect-[4/5] bg-stone/10">
+          <img src="https://res.cloudinary.com/dy1ibwcdn/image/upload/v1784586926/WhatsApp_Image_2026-07-15_at_18.18.47_jb06vw.jpg" alt="Poncho" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="mt-3 text-center">
+          <p class="font-display italic text-base md:text-lg text-bark">Poncho</p>
+          <p class="text-clay text-sm mt-1 tracking-wide">$52.000</p>
+        </div>
+      </div>
+
+      <!-- Producto 3 -->
+      <div class="group">
+        <div class="overflow-hidden aspect-[4/5] bg-stone/10">
+          <img src="https://res.cloudinary.com/dy1ibwcdn/image/upload/v1784586926/WhatsApp_Image_2026-07-15_at_18.20.39_eav2dy.jpg" alt="Manta de Huaso" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="mt-3 text-center">
+          <p class="font-display italic text-base md:text-lg text-bark">Manta de Huaso</p>
+          <p class="text-clay text-sm mt-1 tracking-wide">$55.000</p>
+        </div>
+      </div>
+
+      <!-- Producto 4 -->
+      <div class="group">
+        <div class="overflow-hidden aspect-[4/5] bg-stone/10">
+          <img src="https://res.cloudinary.com/dy1ibwcdn/image/upload/v1784586926/WhatsApp_Image_2026-07-15_at_18.19.59_iaifld.jpg" alt="Billetera de cuero" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="mt-3 text-center">
+          <p class="font-display italic text-base md:text-lg text-bark">Billetera de cuero</p>
+          <p class="text-clay text-sm mt-1 tracking-wide">$25.000</p>
+        </div>
+      </div>
+
+      <!-- Producto 5 -->
+      <div class="group">
+        <div class="overflow-hidden aspect-[4/5] bg-stone/10">
+          <img src="https://res.cloudinary.com/gmbnnmcb/image/upload/v1785970234/2_pp6mke.jpg" alt="Sombrero de mujer elegante con aplicación pañoleta" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="mt-3 text-center">
+          <p class="font-display italic text-base md:text-lg text-bark">Sombrero de mujer elegante con aplicación pañoleta</p>
+          <p class="text-clay text-sm mt-1 tracking-wide">$36.500</p>
+        </div>
+      </div>
+
+      <!-- Producto 6 -->
+      <div class="group">
+        <div class="overflow-hidden aspect-[4/5] bg-stone/10">
+          <img src="https://res.cloudinary.com/gmbnnmcb/image/upload/v1785969756/WhatsApp_Image_2026-08-05_at_18.16.261_bdfuma.jpg" alt="Poncho étnico lana alpaca unisex con gorro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="mt-3 text-center">
+          <p class="font-display italic text-base md:text-lg text-bark">Poncho étnico lana alpaca unisex con gorro</p>
+          <p class="text-clay text-sm mt-1 tracking-wide">$42.500</p>
+        </div>
+      </div>
+
+      <!-- Producto 7 -->
+      <div class="group">
+        <div class="overflow-hidden aspect-[4/5] bg-stone/10">
+          <img src="https://res.cloudinary.com/gmbnnmcb/image/upload/v1785969757/WhatsApp_Image_2026-08-05_at_18.15.39_bhh0jm.jpg" alt="Frutera de fibra natural ñocha 100% artesanal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="mt-3 text-center">
+          <p class="font-display italic text-base md:text-lg text-bark">Frutera de fibra natural ñocha 100% artesanal</p>
+          <p class="text-clay text-sm mt-1 tracking-wide">$25.000</p>
+        </div>
+      </div>
+
+      <!-- Producto 8 -->
+      <div class="group">
+        <div class="overflow-hidden aspect-[4/5] bg-stone/10">
+          <img src="https://res.cloudinary.com/gmbnnmcb/image/upload/v1785969753/WhatsApp_Image_2026-08-05_at_18.17.24_xgq69h.jpg" alt="Sombrero de cuero varón diseño clásico y elegante" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="mt-3 text-center">
+          <p class="font-display italic text-base md:text-lg text-bark">Sombrero de cuero varón diseño clásico y elegante</p>
+          <p class="text-clay text-sm mt-1 tracking-wide">$43.500</p>
+        </div>
+      </div>
+
+      <!-- Producto 9 -->
+      <div class="group">
+        <div class="overflow-hidden aspect-[4/5] bg-stone/10">
+          <img src="https://res.cloudinary.com/gmbnnmcb/image/upload/v1785969756/121_ekmeee.jpg" alt="Poncho con diseño lana alpaca con gorro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="mt-3 text-center">
+          <p class="font-display italic text-base md:text-lg text-bark">Poncho con diseño lana alpaca con gorro</p>
+          <p class="text-clay text-sm mt-1 tracking-wide">$38.500</p>
+        </div>
+      </div>
+
+      <!-- Producto 10 -->
+      <div class="group">
+        <div class="overflow-hidden aspect-[4/5] bg-stone/10">
+          <img src="https://res.cloudinary.com/gmbnnmcb/image/upload/v1785969754/WhatsApp_Image_2026-08-05_at_18.17.25131_ebyjat.jpg" alt="Llavero de cuero artesanal diseño campestre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="mt-3 text-center">
+          <p class="font-display italic text-base md:text-lg text-bark">Llavero de cuero artesanal diseño campestre</p>
+          <p class="text-clay text-sm mt-1 tracking-wide">$6.000</p>
+        </div>
+      </div>
+
+      <!-- Producto 11 -->
+      <div class="group">
+        <div class="overflow-hidden aspect-[4/5] bg-stone/10">
+          <img src="https://res.cloudinary.com/gmbnnmcb/image/upload/v1785969753/WhatsApp_Image_2026-08-05_at_1_cbj5rw.jpg" alt="Ribete de sombrero huaso, cuero carpincho aplicación cinta" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="mt-3 text-center">
+          <p class="font-display italic text-base md:text-lg text-bark">Ribete de sombrero huaso, cuero carpincho</p>
+          <p class="text-clay text-sm mt-1 tracking-wide">$13.500</p>
+        </div>
+      </div>
+
+      <!-- Producto 12 -->
+      <div class="group">
+        <div class="overflow-hidden aspect-[4/5] bg-stone/10">
+          <img src="https://res.cloudinary.com/gmbnnmcb/image/upload/v1785970595/WhatsApp_Image_2026-08-05_at_18.17.25_veltdt.jpg" alt="Cinturón de cuero diseño copihue, estilo huaso" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="mt-3 text-center">
+          <p class="font-display italic text-base md:text-lg text-bark">Cinturón de cuero diseño copihue, estilo huaso</p>
+          <p class="text-clay text-sm mt-1 tracking-wide">$24.500</p>
+        </div>
+      </div>
+
+      <!-- Producto 13 -->
+      <div class="group">
+        <div class="overflow-hidden aspect-[4/5] bg-stone/10">
+          <img src="https://res.cloudinary.com/gmbnnmcb/image/upload/v1785969754/WhatsApp_Image_2026-08-32at_18.17.24_v8c279.jpg" alt="Bolsa souvenir tela crea 45x35 cm con diseño" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="mt-3 text-center">
+          <p class="font-display italic text-base md:text-lg text-bark">Bolsa souvenir tela crea 45x35 cm con diseño</p>
+          <p class="text-clay text-sm mt-1 tracking-wide">$6.500</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FRANJA DE ORIGEN ============ -->
+<section class="bg-moss/90 text-cream">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 py-10 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center text-sm tracking-wide">
+    <div>
+      <p class="font-display italic text-xl mb-1">Origen verificado</p>
+      <p class="text-cream/80">Cada pieza viene de un taller o familia campesina real.</p>
+    </div>
+    <div>
+      <p class="font-display italic text-xl mb-1">Envío a todo Chile</p>
+      <p class="text-cream/80">Despachos desde campo a tu puerta en 3–5 días hábiles.</p>
+    </div>
+    <div>
+      <p class="font-display italic text-xl mb-1">Piezas limitadas</p>
+      <p class="text-cream/80">Producción pequeña, sin réplicas industriales.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-bark text-cream/70">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 py-12 grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm">
+    <div>
+      <span class="font-display italic text-2xl text-cream">Vewunn</span>
+      <p class="mt-3 text-cream/60 leading-relaxed">Bazar de campo dedicado a productos de origen: accesorios, vestuario, decoración, souvenirs y artesanía hecha a mano.</p>
+    </div>
+    <div>
+      <p class="uppercase text-xs tracking-[0.25em] text-cream mb-3">Contacto</p>
+      <p class="text-cream/60">bazardecampov@gmail.com</p>
+      <p class="text-cream/60">Lun–Sáb · 10:00–19:00</p>
+    </div>
+    <div>
+      <p class="uppercase text-xs tracking-[0.25em] text-cream mb-3">Colecciones</p>
+      <div class="flex flex-col gap-1 text-cream/60">
+        <a href="#accesorios" class="hover:text-cream transition-colors">Accesorios</a>
+        <a href="#vestuarios" class="hover:text-cream transition-colors">Vestuarios</a>
+        <a href="#decoracion" class="hover:text-cream transition-colors">Decoración</a>
+        <a href="#souvenir" class="hover:text-cream transition-colors">Souvenir</a>
+        <a href="#artesania" class="hover:text-cream transition-colors">Artesanía</a>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-cream/10 py-4 text-center text-[11px] text-cream/40 tracking-wide">
+    © 2026 Vewunn — Productos de origen
+  </div>
+</footer>
+
+<!-- ============ WHATSAPP FLOTANTE ============ -->
+<a href="https://wa.me/56985312197" target="_blank" rel="noopener noreferrer"
+   aria-label="Escríbenos por WhatsApp"
+   class="fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-[#25D366] shadow-lg flex items-center justify-center hover:scale-105 transition-transform">
+  <svg class="w-7 h-7 text-white" viewBox="0 0 32 32" fill="currentColor">
+    <path d="M16.004 3C9.377 3 4 8.373 4 15c0 2.386.7 4.607 1.905 6.473L4 29l7.72-1.87A11.94 11.94 0 0016.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3zm0 21.9a9.86 9.86 0 01-5.03-1.377l-.36-.214-4.583 1.11 1.127-4.46-.235-.373A9.86 9.86 0 016.1 15c0-5.467 4.446-9.9 9.904-9.9 5.457 0 9.902 4.433 9.902 9.9 0 5.467-4.445 9.9-9.902 9.9zm5.44-7.41c-.298-.15-1.763-.87-2.036-.97-.273-.1-.472-.15-.671.15-.198.298-.767.97-.94 1.168-.173.199-.347.224-.645.075-.298-.15-1.258-.464-2.397-1.48-.886-.79-1.484-1.766-1.658-2.064-.173-.298-.018-.459.13-.608.134-.133.298-.348.446-.522.15-.174.199-.298.298-.497.1-.199.05-.373-.025-.522-.075-.15-.671-1.617-.92-2.216-.242-.582-.489-.503-.671-.512l-.572-.01c-.199 0-.522.075-.796.373-.273.298-1.044 1.02-1.044 2.488s1.069 2.887 1.217 3.086c.15.199 2.104 3.21 5.096 4.502.712.307 1.268.49 1.701.627.715.227 1.365.195 1.879.118.573-.085 1.763-.72 2.012-1.416.249-.696.249-1.293.174-1.417-.074-.124-.273-.199-.571-.348z"/>
+  </svg>
+</a>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+  // Menú móvil
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('flex');
+  });
+
+
+</script>
+
+</body>
+</html>
